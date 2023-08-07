@@ -14,33 +14,35 @@
           <img src="./images/lightbulb-nb.png" alt="lightbulb" />
         </button>
       </nav>
-      <p>
-        Welcome to Hangman! Choose your category and difficulty using the
-        dropdown menus below.
-      </p>
+      <p>Welcome to Hangman!</p>
+      <p>Choose your category and difficulty using the dropdown menus below.</p>
       <div class="menus">
-        <label for="category">Category:</label>
-        <select name="category" id="category-menu">
-          <option value="animals">Animals</option>
-          <option value="cities">Cities</option>
-          <option value="food">Food</option>
-          <option value="movies">Movies</option>
-          <option value="random">Random</option>
-        </select>
-        <label for="difficulty">Difficulty:</label>
-        <select name="difficulty" id="difficulty-menu">
-          <option value="easy">Easy</option>
-          <option value="regular">Regular</option>
-          <option value="beast-mode">BEAST MODE</option>
-        </select>
+        <div class="menus__category">
+          <label for="category">Category:</label>
+          <select name="category" id="category-menu">
+            <option value="animals">Animals</option>
+            <option value="cities">Cities</option>
+            <option value="food">Food</option>
+            <option value="movies">Movies</option>
+            <option value="random">Random</option>
+          </select>
+        </div>
+        <div class="menus__difficulty">
+          <label for="difficulty">Difficulty:</label>
+          <select name="difficulty" id="difficulty-menu">
+            <option value="easy">Easy</option>
+            <option value="regular">Regular</option>
+            <option value="beast-mode">BEAST MODE</option>
+          </select>
+        </div>
       </div>
     </header>
 
     <main>
       <p>Your chosen category is:</p>
       <div class="container">
-        <span id="hangman">Hi</span>
-        <span id="letters-used">Letters used</span>
+        <span id="hangman">Hangman</span>
+        <span id="letters-used">Letters used:</span>
       </div>
       <div class="word">Word to Guess</div>
       <div class="letters">

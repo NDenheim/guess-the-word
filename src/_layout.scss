@@ -1,32 +1,80 @@
 @use "./variables" as *;
 
 body {
-  margin: 20px;
+  margin: 30px 20px;
   font-family: $font-secondary;
-  font-size: 13px;
+  font-size: 4.5vw;
 }
 
-nav {
-  display: flex;
-  justify-content: space-between;
+header {
+  nav {
+    display: flex;
+    justify-content: space-between;
 
-  h1 {
-    font-family: $font-primary;
-    font-size: 10vw;
+    h1 {
+      font-family: $font-primary;
+      font-size: 11vw;
+    }
+
+    button {
+      width: 40px;
+      aspect-ratio: 1/1;
+
+      img {
+        width: 30px;
+        aspect-ratio: 1/1;
+      }
+    }
   }
 
-  button {
-    width: 40px;
-    aspect-ratio: 1/1;
+  p {
+    margin: 20px 0;
+    text-align: center;
+  }
 
-    img {
-      width: 30px;
-      aspect-ratio: 1/1;
+  .menus {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // line-height: 3;
+    margin: 20px 0;
+    font-family: $font-primary;
+    font-size: 3.5vw;
+
+    &__category,
+    &__difficulty {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 10px 0;
+      select {
+        font-size: 5vw;
+        width: 200px;
+      }
     }
   }
 }
 
-#hangman,
-#letters-used {
-  border: 2px solid black;
+main {
+  p {
+    margin: 20px 0;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-around;
+
+    #hangman,
+    #letters-used {
+      margin: 20px;
+      padding: 7px;
+      border: 2px solid black;
+      border-radius: 5vw;
+      width: 35vw;
+      aspect-ratio: 1/1;
+      font-family: $font-primary;
+      font-size: 3.5vw;
+      text-align: center;
+    }
+  }
 }
