@@ -1,0 +1,32 @@
+@use "./variables" as *;
+
+body {
+  margin: 20px;
+  font-family: $font-secondary;
+  font-size: 13px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+
+  h1 {
+    font-family: $font-primary;
+    font-size: 10vw;
+  }
+
+  button {
+    width: 40px;
+    aspect-ratio: 1/1;
+
+    img {
+      width: 30px;
+      aspect-ratio: 1/1;
+    }
+  }
+}
+
+#hangman,
+#letters-used {
+  border: 2px solid black;
+}
