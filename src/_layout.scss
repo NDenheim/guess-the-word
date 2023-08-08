@@ -4,12 +4,21 @@ body {
   margin: 30px 20px;
   font-family: $font-secondary;
   font-size: 4.5vw;
+  background-color: #98f7f7;
+  max-height: 100vh;
+
+  img {
+    position: absolute;
+    width: 250px;
+  }
 }
 
 header {
   nav {
     display: flex;
     justify-content: space-between;
+    margin-top: 6vh;
+    position: relative;
 
     h1 {
       font-family: $font-primary;
@@ -23,6 +32,7 @@ header {
       img {
         width: 30px;
         aspect-ratio: 1/1;
+        position: relative;
       }
     }
   }
@@ -30,6 +40,7 @@ header {
   p {
     margin: 20px 0;
     text-align: center;
+    position: relative;
   }
 
   .menus {
@@ -40,6 +51,7 @@ header {
     margin: 20px 0;
     font-family: $font-primary;
     font-size: 3.5vw;
+    position: relative;
 
     &__category,
     &__difficulty {
@@ -47,9 +59,11 @@ header {
       justify-content: space-between;
       align-items: center;
       margin: 10px 0;
+      position: relative;
+
       select {
         font-size: 5vw;
-        width: 200px;
+        width: 50vw;
       }
     }
   }
@@ -75,6 +89,11 @@ main {
       font-family: $font-primary;
       font-size: 3.5vw;
       text-align: center;
+      background-color: white;
     }
+  }
+
+  .word {
+    margin: 30px 0;
   }
 }
