@@ -17,6 +17,7 @@ const clueDiv = document.querySelector(".clue") as HTMLDivElement;
 const answerText = document.querySelector(
   ".answer__text"
 ) as HTMLParagraphElement;
+const guessesDiv = document.querySelector("#guesses-left");
 
 if (
   !wordDisplay ||
@@ -26,7 +27,8 @@ if (
   !chosenCategory ||
   !clueButton ||
   !clueDiv ||
-  !answerText
+  !answerText ||
+  !guessesDiv
 ) {
   throw new Error("Issue with QS");
 }
@@ -92,40 +94,14 @@ const generateAnswer = (word: Word) => {
   answerText.innerText = mysteryWord;
   //   const wordDisplayArr = wordDisplay.innerText.split(" ");
   //   console.log(wordDisplayArr);
-
-  //   if (word.name == mysteryWord) {
-  //     clueButton.addEventListener("click", () => {
-  //       clueDiv.innerHTML = `Clue: ${word.clue}`;
-  //     });
-  //   }
 };
 
-const wordDisplayArr = wordDisplay.innerText.split(" ");
-console.log(wordDisplayArr);
+// const wordDisplayArr = wordDisplay.innerText.split(" ");
+// console.log(wordDisplayArr);
 
 // console.log(answerText.innerText);
 
 categoryMenu.addEventListener("change", generateAnswer);
-
-// const categoryChange = () => {
-//   categoryMenu.addEventListener("change", generateAnswer);
-
-//   const handleClueButtonPress = async (mysteryWord: string, word: Word) => {
-//     if (word.name.includes(mysteryWord)) {
-//       clueDiv.innerHTML = `Clue: ${word.clue}`;
-//     }
-//   };
-
-//   clueButton.addEventListener("click", handleClueButtonPress);
-// };
-
-// const retrieveMysteryWord = () => {
-//   categoryMenu.addEventListener("change", generateAnswer);
-
-//   console.log(mysteryWord);
-// };
-
-// retrieveMysteryWord;
 
 const handleClueButtonPress = () => {
   //   console.log(answerText.innerText);
@@ -139,24 +115,45 @@ clueButton.addEventListener("click", handleClueButtonPress);
 
 // let letterGuessed = alphabetButtons.values;
 
+let guessesLeft = 10;
+
+// let guesses: string[] = [];
+
 alphabetButtons.forEach((button) => {
   button.addEventListener("click", () => {
+    guessesLeft -= 1;
+    // console.log(guessesLeft);
+    guessesDiv.innerHTML = `Guesses left: ${guessesLeft}`;
+
     // console.log(button.textContent);
     let letterArray = answerText.innerText.split("");
+    let guesses: string[] = [];
     // console.log(letterArray);
 
     for (let i = 0; i < letterArray.length; i++) {
       if (button.textContent == letterArray[i]) {
-        console.log(button.textContent);
-        //     let indices = [];
-        //     // console.log(letterArray.indexOf(button.textContent));
-        //     let idx = letterArray.indexOf(button.textContent);
-        //     while (idx !== -1) {
-        //       indices.push(idx);
-        //       idx = letterArray.indexOf(button.textContent, idx + 1);
-        //     }
-        //     console.log(indices);
+        guesses.push(letterArray[i]);
+        // console.log(guesses); //['m']
+
+        // console.log(letterArray[i]);
+      } else if (
+        button.textContent != letterArray[i] &&
+        guesses[i] == letterArray[i]
+      ) {
+        guesses.push(letterArray[i]);
+        // guesses[i] == letterArray[i];
+      } else {
+        guesses.push("__  ");
       }
+      console.log(guesses); // ['m', '__  ', '__  ', '__  ', '__  ', '__  ']
+      console.log(letterArray); // ['m', 'a', 'd', 'r', 'i', 'd']
     }
+
+    // console.log(guesses); // ['m', '__  ', '__  ', '__  ', '__  ', '__  ']
+    // console.log(letterArray); // ['m', '__  ', '__  ', '__  ', '__  ', '__  ']
+
+    wordDisplay.innerText = guesses.join("");
   });
 });
+
+// } else if (button.textContent == letterArray[i] && guesses[i] != "__") {

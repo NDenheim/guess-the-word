@@ -119,3 +119,17 @@ const handleClueButtonPress = () => {
 clueButton.addEventListener("click", handleClueButtonPress);
 
 let guess = alphabetButtons.innerText;
+
+for (let i = 0; i < letterArray.length; i++) {
+  if (button.textContent == letterArray[i]) {
+    console.log(button.textContent);
+    //     let indices = [];
+    //     // console.log(letterArray.indexOf(button.textContent));
+    //     let idx = letterArray.indexOf(button.textContent);
+    //     while (idx !== -1) {
+    //       indices.push(idx);
+    //       idx = letterArray.indexOf(button.textContent, idx + 1);
+    //     }
+    //     console.log(indices);
+  }
+}
