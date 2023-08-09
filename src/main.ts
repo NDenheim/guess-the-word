@@ -18,6 +18,8 @@ const answerText = document.querySelector(
   ".answer__text"
 ) as HTMLParagraphElement;
 const guessesDiv = document.querySelector("#guesses-left");
+const answerButton = document.querySelector(".answer__button");
+const hangmanDiv = document.querySelector("#hangman");
 
 if (
   !wordDisplay ||
@@ -28,7 +30,9 @@ if (
   !clueButton ||
   !clueDiv ||
   !answerText ||
-  !guessesDiv
+  !guessesDiv ||
+  !answerButton ||
+  !hangmanDiv
 ) {
   throw new Error("Issue with QS");
 }
@@ -63,6 +67,7 @@ const changeMysteryWord = (incomingWord: string) => {
 
 const generateAnswer = (word: Word) => {
   chosenCategory.innerHTML = `Your chosen category is: ${categoryMenu.value}`;
+
   if (categoryMenu.value == "Animals") {
     const animalName =
       animalWords[Math.floor(Math.random() * animalWords.length)].name;
@@ -113,24 +118,35 @@ const handleClueButtonPress = () => {
 };
 clueButton.addEventListener("click", handleClueButtonPress);
 
-// let letterGuessed = alphabetButtons.values;
+const handleAnswerButtonPress = () => {
+  answerText.style.color = "black";
+};
 
+answerButton.addEventListener("click", handleAnswerButtonPress);
+
+// let letterGuessed = alphabetButtons.values;
 let guessesLeft = 10;
 
 // let guesses: string[] = [];
 
 alphabetButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    guessesLeft -= 1;
-    // console.log(guessesLeft);
-    guessesDiv.innerHTML = `Guesses left: ${guessesLeft}`;
+    // guessesLeft -= 1;
+    // guessesDiv.innerHTML = `Lives: <br> ${guessesLeft}`;
 
-    // console.log(button.textContent);
+    // button.attributes("disabled", "disabled")
+
     let letterArray = answerText.innerText.split("");
-    let guesses: string[] = [];
-    // console.log(letterArray);
+    let guesses = [];
+
+    if (letterArray.includes(button.textContent)) {
+      guessesLeft -= 1;
+      guessesDiv.innerHTML = `Lives: <br> ${guessesLeft}`;
+    }
 
     for (let i = 0; i < letterArray.length; i++) {
+      // let guesses: string[] = [];
+
       if (button.textContent == letterArray[i]) {
         guesses.push(letterArray[i]);
         // console.log(guesses); //['m']
@@ -156,4 +172,30 @@ alphabetButtons.forEach((button) => {
   });
 });
 
-// } else if (button.textContent == letterArray[i] && guesses[i] != "__") {
+categoryMenu.addEventListener("change", () => {
+  guessesLeft = 10;
+  guessesDiv.innerHTML = `Lives: <br> ${guessesLeft}`;
+  clueDiv.innerHTML = `Clue:`;
+});
+
+// alphabetButtons.forEach((button) => {
+//   button.addEventListener("click", () => {
+//     if(letter)
+//   });
+// });
+// var HangmanArt = require("hangman-cli-art");
+
+// var art = new HangmanArt({
+//   marginX: 5,
+//   marginY: 5,
+// });
+
+// var chance = 0;
+// var timer = setInterval(function () {
+//   if (chance < 10) {
+//     art.next();
+//     chance++;
+//   } else {
+//     clearInterval(timer);
+//   }
+// }, 1000);
