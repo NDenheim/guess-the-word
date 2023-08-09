@@ -7,10 +7,23 @@ body {
   background-color: #98f7f7;
   max-height: 100vh;
 
-  img {
-    position: absolute;
-    width: 250px;
+  button {
+    border-radius: 20%;
+    background-color: deepskyblue;
   }
+}
+
+img {
+  position: absolute;
+  width: 40vw;
+}
+
+.images__sun {
+  position: absolute;
+  top: 30;
+  right: 0;
+  // float: right;
+  // margin: 0 0 0 auto;
 }
 
 header {
@@ -26,11 +39,11 @@ header {
     }
 
     button {
-      width: 40px;
+      width: 10vw;
       aspect-ratio: 1/1;
 
       img {
-        width: 30px;
+        width: 8vw;
         aspect-ratio: 1/1;
         position: relative;
       }
@@ -80,6 +93,10 @@ main {
     margin: 30px;
   }
 
+  .clue {
+    margin: 20px 0;
+  }
+
   .container {
     display: flex;
     justify-content: space-around;
@@ -91,15 +108,36 @@ main {
       border: 2px solid black;
       border-radius: 5vw;
       width: 35vw;
-      aspect-ratio: 1/1;
+      height: 18vh;
+      // aspect-ratio: 1/1;
       font-family: $font-primary;
       font-size: 3.5vw;
       text-align: center;
       background-color: white;
     }
+    #guesses-left {
+      font-size: 4vw;
+      line-height: 3;
+      padding: 3vh 0;
+    }
   }
 
-  .word {
-    margin: 30px 0;
+  .answer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .answer__button {
+      width: 60%;
+      margin-bottom: 15px;
+      font-size: 4vw;
+    }
+
+    .answer__text {
+      color: #98f7f7;
+      text-align: center;
+      font-size: 6vw;
+      font-family: $font-primary;
+    }
   }
 }
