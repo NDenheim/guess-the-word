@@ -70,8 +70,14 @@ header {
 }
 
 main {
-  p {
+  .chosen-category {
     margin: 20px 0;
+  }
+
+  .mystery-word {
+    text-align: center;
+    font-size: 5vw;
+    margin: 30px;
   }
 
   .container {
