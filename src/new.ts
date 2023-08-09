@@ -1,7 +1,7 @@
 import "./style.scss";
 import { Word, wordArray } from "./types/Words";
 
-const wordDisplay = document.querySelector(".mystery-word") as HTMLDivElement;
+const answerDisplay = document.querySelector(".answer") as HTMLDivElement;
 const categoryMenu = document.querySelector(
   "#category-menu"
 ) as HTMLSelectElement;
@@ -14,44 +14,30 @@ const chosenCategory = document.querySelector(
 ) as HTMLParagraphElement;
 const clueButton = document.querySelector(".clue-button") as HTMLButtonElement;
 const clueDiv = document.querySelector(".clue") as HTMLDivElement;
-const answerText = document.querySelector(
-  ".answer__text"
-) as HTMLParagraphElement;
 
 if (
-  !wordDisplay ||
+  !answerDisplay ||
   !categoryMenu ||
   !difficultyMenu ||
   !alphabetButtons ||
   !chosenCategory ||
   !clueButton ||
-  !clueDiv ||
-  !answerText
+  !clueDiv
 ) {
   throw new Error("Issue with QS");
 }
 
-const animalWords = wordArray.filter((word: Word) => {
-  return word.category.includes("Animals");
+let allWords: string[] = [];
+let allClues: string[] = [];
+
+wordArray.forEach((word) => {
+  allWords.push(word.name);
+  allClues.push(word.clue);
 });
+console.log(allWords);
+console.log(allClues);
 
-const cityWords = wordArray.filter((word: Word) => {
-  return word.category.includes("Cities");
-});
-
-// const easyCityWords = cityWords.filter((word: Word) => {
-//   return word.difficulty.includes("Easy");
-// });
-
-// console.log(easyCityWords);
-
-const foodWords = wordArray.filter((word: Word) => {
-  return word.category.includes("Food");
-});
-
-const movieWords = wordArray.filter((word: Word) => {
-  return word.category.includes("Movies");
-});
+// -----------------------------------------------------
 
 let mysteryWord: string = "";
 
@@ -90,8 +76,6 @@ const generateAnswer = (word: Word) => {
     changeMysteryWord(Name);
   }
   answerText.innerText = mysteryWord;
-  //   const wordDisplayArr = wordDisplay.innerText.split(" ");
-  //   console.log(wordDisplayArr);
 
   //   if (word.name == mysteryWord) {
   //     clueButton.addEventListener("click", () => {
@@ -99,9 +83,6 @@ const generateAnswer = (word: Word) => {
   //     });
   //   }
 };
-
-const wordDisplayArr = wordDisplay.innerText.split(" ");
-console.log(wordDisplayArr);
 
 // console.log(answerText.innerText);
 
@@ -137,26 +118,4 @@ const handleClueButtonPress = () => {
 };
 clueButton.addEventListener("click", handleClueButtonPress);
 
-// let letterGuessed = alphabetButtons.values;
-
-alphabetButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    // console.log(button.textContent);
-    let letterArray = answerText.innerText.split("");
-    // console.log(letterArray);
-
-    for (let i = 0; i < letterArray.length; i++) {
-      if (button.textContent == letterArray[i]) {
-        console.log(button.textContent);
-        //     let indices = [];
-        //     // console.log(letterArray.indexOf(button.textContent));
-        //     let idx = letterArray.indexOf(button.textContent);
-        //     while (idx !== -1) {
-        //       indices.push(idx);
-        //       idx = letterArray.indexOf(button.textContent, idx + 1);
-        //     }
-        //     console.log(indices);
-      }
-    }
-  });
-});
+let guess = alphabetButtons.innerText;
