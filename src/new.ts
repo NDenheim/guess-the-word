@@ -133,3 +133,73 @@ for (let i = 0; i < letterArray.length; i++) {
     //     console.log(indices);
   }
 }
+
+// HTML with 2 menus
+
+<header>
+  <nav>
+    <h1>Guess the Word</h1>
+    <button class="clue-button">
+      <img src="./images/lightbulb-nb.png" alt="lightbulb" />
+    </button>
+  </nav>
+  <p>Welcome to Guess the Word!</p>
+  <p>Choose your category using the dropdown menu below.</p>
+  <div class="menus">
+    <div class="menus__category">
+      <label for="category">Category:</label>
+      <select name="category" id="category-menu">
+        <option value="">Category</option>
+        <option value="Animals">Animals</option>
+        <option value="Cities">Cities</option>
+        <option value="Food">Food</option>
+        <option value="Movies">Movies</option>
+        <option value="Random">Random</option>
+      </select>
+    </div>
+    <div class="menus__difficulty">
+      <label for="difficulty">Difficulty:</label>
+      <select name="difficulty" id="difficulty-menu">
+        <option value="">Difficulty</option>
+        <option value="easy">Easy</option>
+        <option value="regular">Regular</option>
+        <option value="beast-mode">BEAST MODE</option>
+      </select>
+    </div>
+  </div>
+</header>;
+
+// Close to correct
+
+const checkGuesses = (letterArray: string[], letter: any) => {
+  // guesses = [];
+  for (let i = 0; i < letterArray.length; i++) {
+    // let guesses: string[] = [];
+    console.log(guesses);
+    console.log(letter);
+    console.log(letterArray);
+
+    // Check if:
+    // -- button = correct letter
+
+    if (letter == letterArray[i]) {
+      guesses.splice(i, 1, letterArray[i]);
+      // guesses.push(letterArray[i]);
+      console.log("first if"); //['m']
+    } else if (letter != letterArray[i] && guesses[i] == letterArray[i]) {
+      return;
+      // guesses.push(letterArray[i]);
+      console.log("if else"); //['m']
+    } else if (letterArray[i] == guesses[i]) {
+      return;
+    } else {
+      guesses.splice(i, 1, "__  ");
+      console.log("else"); //['m']
+
+      // guesses.push("__  ");
+    }
+    // console.log(guesses); // ['m', '__  ', '__  ', '__  ', '__  ', '__  ']
+    // console.log(letterArray); // ['m', 'a', 'd', 'r', 'i', 'd']
+  }
+  // wordDisplay.innerText = guesses.join("");
+};

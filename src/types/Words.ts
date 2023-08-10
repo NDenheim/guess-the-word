@@ -19,6 +19,12 @@ export const wordArray: Word[] = [
     difficulty: "Easy",
   },
   {
+    name: "dinosaur",
+    category: "Animals",
+    clue: "Only chance you're seeing one of these is at the movies",
+    difficulty: "Regular",
+  },
+  {
     name: "london",
     category: "Cities",
     clue: "Think red buses and a royal palace",
@@ -55,12 +61,6 @@ export const wordArray: Word[] = [
     difficulty: "Regular",
   },
   {
-    name: "new york",
-    category: "Cities",
-    clue: "You won't find the big pear here",
-    difficulty: "Regular",
-  },
-  {
     name: "chocolate",
     category: "Food",
     clue: "Be sure to buy this on sale the day after Valentines Day",
@@ -70,7 +70,7 @@ export const wordArray: Word[] = [
     name: "sandwich",
     category: "Food",
     clue: "Gotta love a Tesco meal deal",
-    difficulty: "Easy",
+    difficulty: "Regular",
   },
   {
     name: "banana",
@@ -82,7 +82,7 @@ export const wordArray: Word[] = [
     name: "pizza",
     category: "Food",
     clue: "Your favourite is probably either from Italy or New York",
-    difficulty: "Regular",
+    difficulty: "Easy",
   },
   {
     name: "spinach",

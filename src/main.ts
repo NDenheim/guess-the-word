@@ -5,10 +5,10 @@ const wordDisplay = document.querySelector(".mystery-word") as HTMLDivElement;
 const categoryMenu = document.querySelector(
   "#category-menu"
 ) as HTMLSelectElement;
-const difficultyMenu = document.querySelector(
-  "#difficulty-menu"
-) as HTMLSelectElement;
-const alphabetButtons = document.querySelectorAll(".letters__button");
+// const difficultyMenu = document.querySelector(
+//   "#difficulty-menu"
+// ) as HTMLSelectElement;
+const alphabetButtons = document.querySelectorAll(".letters__button") as any;
 const chosenCategory = document.querySelector(
   ".chosen-category"
 ) as HTMLParagraphElement;
@@ -17,14 +17,13 @@ const clueDiv = document.querySelector(".clue") as HTMLDivElement;
 const answerText = document.querySelector(
   ".answer__text"
 ) as HTMLParagraphElement;
-const guessesDiv = document.querySelector("#guesses-left");
+const guessesDiv = document.querySelector("#guesses-left") as HTMLSpanElement;
 const answerButton = document.querySelector(".answer__button");
 const hangmanDiv = document.querySelector("#hangman");
 
 if (
   !wordDisplay ||
   !categoryMenu ||
-  !difficultyMenu ||
   !alphabetButtons ||
   !chosenCategory ||
   !clueButton ||
@@ -97,6 +96,7 @@ const generateAnswer = (word: Word) => {
     changeMysteryWord(Name);
   }
   answerText.innerText = mysteryWord;
+
   //   const wordDisplayArr = wordDisplay.innerText.split(" ");
   //   console.log(wordDisplayArr);
 };
@@ -119,83 +119,103 @@ const handleClueButtonPress = () => {
 clueButton.addEventListener("click", handleClueButtonPress);
 
 const handleAnswerButtonPress = () => {
+  alert("Bit embarrassing but okay...");
   answerText.style.color = "black";
 };
 
 answerButton.addEventListener("click", handleAnswerButtonPress);
 
-// let letterGuessed = alphabetButtons.values;
 let guessesLeft = 10;
 
-// let guesses: string[] = [];
+let guesses: string[] = [];
+let letterArray = answerText.innerText.split("");
+guesses = letterArray.map((letter) => {
+  return (letter = "");
+});
 
-alphabetButtons.forEach((button) => {
+alphabetButtons.forEach((button: any) => {
   button.addEventListener("click", () => {
-    // guessesLeft -= 1;
-    // guessesDiv.innerHTML = `Lives: <br> ${guessesLeft}`;
+    guessesLeft -= 1;
+    guessesDiv.innerHTML = `Guesses: <br> ${guessesLeft}`;
+
+    if (guessesLeft >= 4) {
+      guessesDiv.style.color = "black";
+    } else if (guessesLeft < 4) {
+      guessesDiv.style.color = "red";
+    }
+
+    if (guessesLeft == 0) {
+      alert("You lost...this is awkward");
+    }
 
     // button.attributes("disabled", "disabled")
 
     let letterArray = answerText.innerText.split("");
-    let guesses = [];
-
-    if (letterArray.includes(button.textContent)) {
-      guessesLeft -= 1;
-      guessesDiv.innerHTML = `Lives: <br> ${guessesLeft}`;
-    }
-
-    for (let i = 0; i < letterArray.length; i++) {
-      // let guesses: string[] = [];
-
-      if (button.textContent == letterArray[i]) {
-        guesses.push(letterArray[i]);
-        // console.log(guesses); //['m']
-
-        // console.log(letterArray[i]);
-      } else if (
-        button.textContent != letterArray[i] &&
-        guesses[i] == letterArray[i]
-      ) {
-        guesses.push(letterArray[i]);
-        // guesses[i] == letterArray[i];
-      } else {
-        guesses.push("__  ");
-      }
-      console.log(guesses); // ['m', '__  ', '__  ', '__  ', '__  ', '__  ']
-      console.log(letterArray); // ['m', 'a', 'd', 'r', 'i', 'd']
-    }
-
-    // console.log(guesses); // ['m', '__  ', '__  ', '__  ', '__  ', '__  ']
-    // console.log(letterArray); // ['m', '__  ', '__  ', '__  ', '__  ', '__  ']
+    checkGuesses(letterArray, button.textContent);
+    button.disabled = true;
 
     wordDisplay.innerText = guesses.join("");
+  });
+  // return guesses;
+});
+
+const checkGuesses = (letterArray: string[], letter: any) => {
+  // guesses = [];
+  for (let i = 0; i < letterArray.length; i++) {
+    // let guesses: string[] = [];
+    console.log(guesses);
+    console.log(letter);
+    console.log(letterArray);
+
+    // Check if:
+    // -- button = correct letter
+    // -- correct letter already there
+
+    if (letter == letterArray[i]) {
+      guesses.splice(i, 1, letterArray[i]);
+      // guesses.push(letterArray[i]);
+      console.log("first if"); //['m']
+    } else if (letter != letterArray[i] && guesses[i] == letterArray[i]) {
+      guesses.splice(i, 1, letterArray[i]);
+      // guesses.push(letterArray[i]);
+      console.log("if else"); //['m']
+    } else if (letterArray[i] == guesses[i]) {
+      return;
+    } else {
+      guesses.splice(i, 1, "__  ");
+      console.log("else"); //['m']
+
+      // guesses.push("__  ");
+    }
+    // console.log(guesses); // ['m', '__  ', '__  ', '__  ', '__  ', '__  ']
+    // console.log(letterArray); // ['m', 'a', 'd', 'r', 'i', 'd']
+  }
+  return guesses;
+  // wordDisplay.innerText = guesses.join("");
+};
+
+let lettersUsedArray: string[] = [];
+
+alphabetButtons.forEach((button: any) => {
+  button.addEventListener("click", () => {
+    // let lettersUsedArray = [];
+    lettersUsedArray.push(button.textContent);
+    let lettersUsed = lettersUsedArray.join(" ");
+    hangmanDiv.innerHTML = `Letters used: <br> ${lettersUsed}`;
   });
 });
 
 categoryMenu.addEventListener("change", () => {
   guessesLeft = 10;
-  guessesDiv.innerHTML = `Lives: <br> ${guessesLeft}`;
+  guessesDiv.innerHTML = `Guesses: <br> ${guessesLeft}`;
   clueDiv.innerHTML = `Clue:`;
+  guessesDiv.style.color = "black";
+  answerText.style.color = "transparent";
+  lettersUsedArray = [];
+  let lettersUsed = lettersUsedArray.join(" ");
+  hangmanDiv.innerHTML = `Letters used: <br> ${lettersUsed}`;
+
+  alphabetButtons.forEach((button: any) => {
+    button.disabled = false;
+  });
 });
-
-// alphabetButtons.forEach((button) => {
-//   button.addEventListener("click", () => {
-//     if(letter)
-//   });
-// });
-// var HangmanArt = require("hangman-cli-art");
-
-// var art = new HangmanArt({
-//   marginX: 5,
-//   marginY: 5,
-// });
-
-// var chance = 0;
-// var timer = setInterval(function () {
-//   if (chance < 10) {
-//     art.next();
-//     chance++;
-//   } else {
-//     clearInterval(timer);
-//   }
-// }, 1000);
