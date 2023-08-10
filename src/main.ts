@@ -5,9 +5,7 @@ const wordDisplay = document.querySelector(".mystery-word") as HTMLDivElement;
 const categoryMenu = document.querySelector(
   "#category-menu"
 ) as HTMLSelectElement;
-// const difficultyMenu = document.querySelector(
-//   "#difficulty-menu"
-// ) as HTMLSelectElement;
+
 const alphabetButtons = document.querySelectorAll(".letters__button") as any;
 const chosenCategory = document.querySelector(
   ".chosen-category"
@@ -20,6 +18,12 @@ const answerText = document.querySelector(
 const guessesDiv = document.querySelector("#guesses-left") as HTMLSpanElement;
 const answerButton = document.querySelector(".answer__button");
 const hangmanDiv = document.querySelector("#hangman");
+const againButton = document.querySelector(
+  ".again__button"
+) as HTMLButtonElement;
+// const challengeButton = document.querySelector(
+//   ".challenge__button"
+// ) as HTMLButtonElement;
 
 if (
   !wordDisplay ||
@@ -31,7 +35,9 @@ if (
   !answerText ||
   !guessesDiv ||
   !answerButton ||
-  !hangmanDiv
+  !hangmanDiv ||
+  !againButton
+  // || !challengeButton
 ) {
   throw new Error("Issue with QS");
 }
@@ -48,8 +54,6 @@ const cityWords = wordArray.filter((word: Word) => {
 //   return word.difficulty.includes("Easy");
 // });
 
-// console.log(easyCityWords);
-
 const foodWords = wordArray.filter((word: Word) => {
   return word.category.includes("Food");
 });
@@ -58,58 +62,49 @@ const movieWords = wordArray.filter((word: Word) => {
   return word.category.includes("Movies");
 });
 
+alphabetButtons.forEach((button: any) => {
+  button.disabled = true;
+});
+
 let mysteryWord: string = "";
+answerText.innerText = "answer";
 
-const changeMysteryWord = (incomingWord: string) => {
-  mysteryWord = incomingWord;
-};
-
-const generateAnswer = (word: Word) => {
+const generateAnswer = () => {
   chosenCategory.innerHTML = `Your chosen category is: ${categoryMenu.value}`;
 
   if (categoryMenu.value == "Animals") {
     const animalName =
       animalWords[Math.floor(Math.random() * animalWords.length)].name;
     wordDisplay.innerText = animalName.replace(/[a-z]/g, "__  ");
-    changeMysteryWord(animalName);
+    mysteryWord = animalName;
   } else if (categoryMenu.value == "Cities") {
     const cityName =
       cityWords[Math.floor(Math.random() * cityWords.length)].name;
     wordDisplay.innerText = cityName
       .replace(/[ ]/g, "/")
       .replace(/[a-z]/g, "__  ");
-    changeMysteryWord(cityName);
+    mysteryWord = cityName;
   } else if (categoryMenu.value == "Food") {
     const foodName =
       foodWords[Math.floor(Math.random() * foodWords.length)].name;
     wordDisplay.innerText = foodName.replace(/[a-z]/g, "__  ");
-    changeMysteryWord(foodName);
+    mysteryWord = foodName;
   } else if (categoryMenu.value == "Movies") {
     const movieName =
       movieWords[Math.floor(Math.random() * movieWords.length)].name;
     wordDisplay.innerText = movieName.replace(/[a-z]/g, "__  ");
-    changeMysteryWord(movieName);
+    mysteryWord = movieName;
   } else if (categoryMenu.value == "Random") {
-    // chosenCategory.innerHTML = `Your chosen category is: ${word.category}`;
     const Name = wordArray[Math.floor(Math.random() * wordArray.length)].name;
     wordDisplay.innerText = Name.replace(/[a-z]/g, "__  ");
-    changeMysteryWord(Name);
+    mysteryWord = Name;
   }
   answerText.innerText = mysteryWord;
-
-  //   const wordDisplayArr = wordDisplay.innerText.split(" ");
-  //   console.log(wordDisplayArr);
 };
-
-// const wordDisplayArr = wordDisplay.innerText.split(" ");
-// console.log(wordDisplayArr);
-
-// console.log(answerText.innerText);
 
 categoryMenu.addEventListener("change", generateAnswer);
 
 const handleClueButtonPress = () => {
-  //   console.log(answerText.innerText);
   for (let i = 0; i < wordArray.length; i++) {
     if (wordArray[i].name == answerText.innerText) {
       clueDiv.innerHTML = `Clue: ${wordArray[i].clue}`;
@@ -145,60 +140,43 @@ alphabetButtons.forEach((button: any) => {
     }
 
     if (guessesLeft == 0) {
-      alert("You lost...this is awkward");
+      alert("You lost...this is awkward. Press 'Play Again'.");
     }
-
-    // button.attributes("disabled", "disabled")
 
     let letterArray = answerText.innerText.split("");
     checkGuesses(letterArray, button.textContent);
     button.disabled = true;
 
     wordDisplay.innerText = guesses.join("");
+
+    if (wordDisplay.innerText == answerText.innerText) {
+      alert(
+        "Winner winner, chicken dinner. To play again, click the button at the bottom of the screen."
+      );
+      // challengeButton.className = "show";
+    }
   });
-  // return guesses;
 });
 
 const checkGuesses = (letterArray: string[], letter: any) => {
-  // guesses = [];
   for (let i = 0; i < letterArray.length; i++) {
-    // let guesses: string[] = [];
-    console.log(guesses);
-    console.log(letter);
-    console.log(letterArray);
-
-    // Check if:
-    // -- button = correct letter
-    // -- correct letter already there
-
     if (letter == letterArray[i]) {
       guesses.splice(i, 1, letterArray[i]);
-      // guesses.push(letterArray[i]);
-      console.log("first if"); //['m']
     } else if (letter != letterArray[i] && guesses[i] == letterArray[i]) {
       guesses.splice(i, 1, letterArray[i]);
-      // guesses.push(letterArray[i]);
-      console.log("if else"); //['m']
     } else if (letterArray[i] == guesses[i]) {
       return;
     } else {
       guesses.splice(i, 1, "__  ");
-      console.log("else"); //['m']
-
-      // guesses.push("__  ");
     }
-    // console.log(guesses); // ['m', '__  ', '__  ', '__  ', '__  ', '__  ']
-    // console.log(letterArray); // ['m', 'a', 'd', 'r', 'i', 'd']
   }
   return guesses;
-  // wordDisplay.innerText = guesses.join("");
 };
 
 let lettersUsedArray: string[] = [];
 
 alphabetButtons.forEach((button: any) => {
   button.addEventListener("click", () => {
-    // let lettersUsedArray = [];
     lettersUsedArray.push(button.textContent);
     let lettersUsed = lettersUsedArray.join(" ");
     hangmanDiv.innerHTML = `Letters used: <br> ${lettersUsed}`;
@@ -219,3 +197,13 @@ categoryMenu.addEventListener("change", () => {
     button.disabled = false;
   });
 });
+
+againButton.addEventListener("click", () => {
+  window.location.reload();
+});
+
+// const challengeMode = () => {
+//   document.body.classList.toggle("challengeMode");
+// };
+
+// challengeButton.addEventListener("click", challengeMode);
