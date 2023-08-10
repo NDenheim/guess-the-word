@@ -9,8 +9,12 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@types/node": "^20.4.9",
     "sass": "^1.64.2",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
+  },
+  "dependencies": {
+    "hangman-cli-art": "^1.0.1"
   }
 }

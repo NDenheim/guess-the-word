@@ -4,33 +4,46 @@ body {
   margin: 30px 20px;
   font-family: $font-secondary;
   font-size: 4.5vw;
-  background-color: #98f7f7;
+  background-color: $color-primary;
   max-height: 100vh;
 
-  img {
-    position: absolute;
-    width: 250px;
+  button {
+    border-radius: 20%;
+    background-color: $color-secondary;
   }
+}
+
+img {
+  position: absolute;
+  width: 40vw;
+}
+
+.images__sun {
+  position: absolute;
+  right: 0;
+  // float: right;
+  // margin: 0 0 0 auto;
 }
 
 header {
   nav {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-top: 6vh;
     position: relative;
 
     h1 {
       font-family: $font-primary;
-      font-size: 11vw;
+      font-size: 5.4vw;
     }
 
     button {
-      width: 40px;
+      width: 10vw;
       aspect-ratio: 1/1;
 
       img {
-        width: 30px;
+        width: 8vw;
         aspect-ratio: 1/1;
         position: relative;
       }
@@ -53,8 +66,7 @@ header {
     font-size: 3.5vw;
     position: relative;
 
-    &__category,
-    &__difficulty {
+    &__category {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -62,7 +74,7 @@ header {
       position: relative;
 
       select {
-        font-size: 5vw;
+        font-size: 4vw;
         width: 50vw;
       }
     }
@@ -70,30 +82,264 @@ header {
 }
 
 main {
-  p {
+  .chosen-category {
     margin: 20px 0;
+    position: relative;
+  }
+
+  .mystery-word {
+    text-align: center;
+    font-size: 5vw;
+    margin: 30px;
+  }
+
+  .clue {
+    margin: 20px 0;
+    text-align: center;
   }
 
   .container {
     display: flex;
     justify-content: space-around;
+    position: relative;
 
     #hangman,
-    #letters-used {
+    #guesses-left {
       margin: 20px;
-      padding: 7px;
+      padding: 9px;
       border: 2px solid black;
       border-radius: 5vw;
       width: 35vw;
-      aspect-ratio: 1/1;
+      height: 18vh;
+      line-height: 1.3;
+      // aspect-ratio: 1/1;
       font-family: $font-primary;
       font-size: 3.5vw;
       text-align: center;
       background-color: white;
     }
+    #guesses-left {
+      // font-size: 3.5vw;
+      // aspect-ratio: 1/1;
+      line-height: 3;
+      // padding: 3vh 0;
+    }
   }
 
-  .word {
-    margin: 30px 0;
+  .answer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+
+    .answer__button {
+      width: 60%;
+      margin-bottom: 15px;
+      font-size: 4vw;
+      position: relative;
+    }
+
+    .answer__text {
+      color: transparent;
+      text-align: center;
+      font-size: 6vw;
+      font-family: $font-primary;
+    }
+  }
+  .footer-buttons {
+    display: flex;
+    justify-content: space-between;
+
+    .again__button {
+      font-size: 4vw;
+      width: 30%;
+    }
+  }
+
+  .grass__img {
+    width: 100%;
+    left: 0;
+    position: absolute;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    margin: 20px 20px;
+    font-family: $font-secondary;
+    font-size: 2.6vw;
+    background-color: $color-primary;
+    max-height: 100vh;
+  }
+
+  img {
+    position: absolute;
+    width: 30vw;
+  }
+
+  header {
+    nav {
+      align-items: center;
+      h1 {
+        font-family: $font-primary;
+        font-size: 5.3vw;
+      }
+
+      button {
+        width: 10vw;
+        aspect-ratio: 1/1;
+
+        img {
+          width: 8vw;
+          aspect-ratio: 1/1;
+          position: relative;
+        }
+      }
+    }
+
+    p {
+      margin: 20px 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .menus {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      // line-height: 3;
+      margin: 20px 0;
+      font-family: $font-primary;
+      font-size: 3vw;
+      position: relative;
+
+      &__category {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px 0;
+        position: relative;
+
+        select {
+          font-size: 3vw;
+          width: 50vw;
+        }
+      }
+    }
+  }
+  main {
+    .mystery-word {
+      text-align: center;
+      font-size: 4vw;
+      margin: 20px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-around;
+      position: relative;
+
+      #hangman,
+      #guesses-left {
+        width: 30vw;
+        height: 15vh;
+        line-height: 1.3;
+        // aspect-ratio: 1/1;
+        font-size: 2vw;
+      }
+      #guesses-left {
+        // font-size: 3.5vw;
+        // aspect-ratio: 1/1;
+        line-height: 3;
+        // padding: 3vh 0;
+      }
+    }
+
+    .answer {
+      .answer__button {
+        font-size: 3vw;
+      }
+
+      .answer__text {
+        font-size: 4vw;
+      }
+    }
+    .footer-buttons {
+      display: flex;
+      justify-content: space-between;
+
+      .again__button {
+        font-size: 3vw;
+        width: 30%;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  body {
+    font-size: 2.5vw;
+  }
+
+  header {
+    nav {
+      align-items: center;
+      h1 {
+        font-family: $font-primary;
+        font-size: 5vw;
+      }
+
+      button {
+        width: 5vw;
+        aspect-ratio: 1/1;
+
+        img {
+          width: 4vw;
+          aspect-ratio: 1/1;
+          position: relative;
+        }
+      }
+    }
+
+    p {
+      margin: 20px 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .menus {
+      margin: 10px 0;
+      font-size: 2vw;
+
+      &__category {
+        margin: 10px 0;
+
+        select {
+          font-size: 2vw;
+          width: 35vw;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1150px) {
+  main {
+    .container {
+      #hangman,
+      #guesses-left {
+        width: 30vw;
+        height: 20vh;
+        line-height: 1.3;
+        // aspect-ratio: 1/1;
+        font-size: 2vw;
+      }
+      #guesses-left {
+        // font-size: 3.5vw;
+        // aspect-ratio: 1/1;
+        line-height: 2;
+        // padding: 3vh 0;
+      }
+    }
   }
 }

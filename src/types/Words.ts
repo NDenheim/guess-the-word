@@ -7,6 +7,24 @@ export type Word = {
 
 export const wordArray: Word[] = [
   {
+    name: "kitten",
+    category: "Animals",
+    clue: "A baby Garfield",
+    difficulty: "Easy",
+  },
+  {
+    name: "monkey",
+    category: "Animals",
+    clue: "A lover of bananas and trees",
+    difficulty: "Easy",
+  },
+  {
+    name: "dinosaur",
+    category: "Animals",
+    clue: "Only chance you're seeing one of these is at the movies",
+    difficulty: "Regular",
+  },
+  {
     name: "london",
     category: "Cities",
     clue: "Think red buses and a royal palace",
@@ -43,9 +61,69 @@ export const wordArray: Word[] = [
     difficulty: "Regular",
   },
   {
-    name: "new york",
-    category: "Cities",
-    clue: "You won't find the big pear here",
+    name: "chocolate",
+    category: "Food",
+    clue: "Be sure to buy this on sale the day after Valentines Day",
+    difficulty: "Easy",
+  },
+  {
+    name: "sandwich",
+    category: "Food",
+    clue: "Gotta love a Tesco meal deal",
+    difficulty: "Regular",
+  },
+  {
+    name: "banana",
+    category: "Food",
+    clue: "Good for potassium and throwing at people in Mario Kart",
+    difficulty: "Easy",
+  },
+  {
+    name: "pizza",
+    category: "Food",
+    clue: "Your favourite is probably either from Italy or New York",
+    difficulty: "Easy",
+  },
+  {
+    name: "spinach",
+    category: "Food",
+    clue: "If it's good for Popeye, it's good for me",
+    difficulty: "Regular",
+  },
+  {
+    name: "carrot",
+    category: "Food",
+    clue: "The only acceptable vegetable for a cake",
+    difficulty: "Regular",
+  },
+  {
+    name: "feta",
+    category: "Food",
+    clue: "A must for a greek salad",
+    difficulty: "Regular",
+  },
+  {
+    name: "bruschetta",
+    category: "Food",
+    clue: "A must in Italy",
+    difficulty: "Regular",
+  },
+  {
+    name: "shrek",
+    category: "Movies",
+    clue: "Everyone's favourite ogre",
+    difficulty: "Regular",
+  },
+  {
+    name: "inception",
+    category: "Movies",
+    clue: "And it was all a dream...",
+    difficulty: "Regular",
+  },
+  {
+    name: "jaws",
+    category: "Movies",
+    clue: "You might not want to swim in the ocean after watching this",
     difficulty: "Regular",
   },
 ];

@@ -9,5 +9,23 @@
     font-family: $font-primary;
     width: 5vw;
     margin: 1vw 2vw;
+    aspect-ratio: 1/1;
+    font-size: 3vw;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .letters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    button {
+      font-family: $font-primary;
+      width: 3.5vw;
+      margin: 1vw 1vw;
+      aspect-ratio: 1/1;
+      font-size: 2vw;
+    }
   }
 }
