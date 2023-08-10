@@ -13,13 +13,13 @@
     <!-- </div> -->
     <header>
       <nav>
-        <h1>Hangman</h1>
+        <h1>Guess the Word</h1>
         <button class="clue-button">
           <img src="./images/lightbulb-nb.png" alt="lightbulb" />
         </button>
       </nav>
-      <p>Welcome to Hangman!</p>
-      <p>Choose your category and difficulty using the dropdown menus below.</p>
+      <p>Welcome to Guess the Word!</p>
+      <p>Choose your category using the dropdown menu below.</p>
       <div class="menus">
         <div class="menus__category">
           <label for="category">Category:</label>
@@ -30,15 +30,6 @@
             <option value="Food">Food</option>
             <option value="Movies">Movies</option>
             <option value="Random">Random</option>
-          </select>
-        </div>
-        <div class="menus__difficulty">
-          <label for="difficulty">Difficulty:</label>
-          <select name="difficulty" id="difficulty-menu">
-            <option value="">Difficulty</option>
-            <option value="easy">Easy</option>
-            <option value="regular">Regular</option>
-            <option value="beast-mode">BEAST MODE</option>
           </select>
         </div>
       </div>
@@ -77,15 +68,15 @@
       </div>
       <div class="clue">Clue:</div>
       <div class="container">
-        <span id="hangman">Hangman</span>
-        <span id="guesses-left">Lives:</span>
+        <span id="hangman">Letters used: <br /> </span>
+        <span id="guesses-left">Guesses:</span>
       </div>
       <div class="answer">
         <button class="answer__button">Ready to give up? Click here</button>
         <p class="answer__text"></p>
       </div>
+      <!-- <img class="grass__img" src="./images/grass.png" alt="grass" /> -->
     </main>
-    <!-- <script type="module" src="/src/main.ts"></script> -->
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
