@@ -1,0 +1,93 @@
+@use "./variables" as *;
+
+body {
+  button {
+    border-radius: 20%;
+    background-color: $color-secondary;
+  }
+}
+
+header {
+  nav {
+    button {
+      width: 10vw;
+      aspect-ratio: 1/1;
+
+      img {
+        width: 8vw;
+        aspect-ratio: 1/1;
+        position: relative;
+      }
+    }
+  }
+}
+
+main {
+  .answer {
+    .answer__button {
+      width: 60%;
+      margin-bottom: 15px;
+      font-size: 4vw;
+      position: relative;
+    }
+  }
+  .footer-buttons {
+    display: flex;
+    justify-content: space-between;
+
+    .again__button {
+      font-size: 4vw;
+      width: 30%;
+    }
+  }
+}
+
+@media screen and (min-width: 750px) {
+  header {
+    nav {
+      button {
+        width: 10vw;
+        aspect-ratio: 1/1;
+
+        img {
+          width: 8vw;
+          aspect-ratio: 1/1;
+          position: relative;
+        }
+      }
+    }
+  }
+  main {
+    .answer {
+      .answer__button {
+        font-size: 3vw;
+      }
+    }
+    .footer-buttons {
+      display: flex;
+      justify-content: space-between;
+
+      .again__button {
+        font-size: 3vw;
+        width: 30%;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  header {
+    nav {
+      button {
+        width: 5vw;
+        aspect-ratio: 1/1;
+
+        img {
+          width: 4vw;
+          aspect-ratio: 1/1;
+          position: relative;
+        }
+      }
+    }
+  }
+}
