@@ -50,10 +50,6 @@ const cityWords = wordArray.filter((word: Word) => {
   return word.category.includes("Cities");
 });
 
-// const easyCityWords = cityWords.filter((word: Word) => {
-//   return word.difficulty.includes("Easy");
-// });
-
 const foodWords = wordArray.filter((word: Word) => {
   return word.category.includes("Food");
 });
@@ -126,6 +122,7 @@ let guesses: string[] = [];
 let letterArray = answerText.innerText.split("");
 guesses = letterArray.map((letter) => {
   return (letter = "");
+  console.log(letter);
 });
 
 alphabetButtons.forEach((button: any) => {
