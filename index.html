@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hangman</title>
+    <script type="module" crossorigin src="./assets/index-248a5620.js"></script>
+    <link rel="stylesheet" href="./assets/index-b15a2eae.css">
+  </head>
+  <body>
+    <!-- <div class="images"> -->
+    <img class="images__cloud" src="./assets/cloud-nb-96c86901.png" alt="cloud" />
+    <img class="images__sun" src="./assets/sun3-d23fb645.png" alt="sun" />
+    <!-- </div> -->
+    <header>
+      <nav>
+        <h1>Guess the Word</h1>
+        <button class="clue-button">
+          <img src="./assets/lightbulb-nb-2074ce0c.png" alt="lightbulb" />
+        </button>
+      </nav>
+      <!-- <p>Welcome to Guess the Word!</p> -->
+      <p>Choose your category using the dropdown menu below.</p>
+      <div class="menus">
+        <div class="menus__category">
+          <label for="category">Category:</label>
+          <select name="category" id="category-menu">
+            <option value="">Category</option>
+            <option value="Animals">Animals</option>
+            <option value="Cities">Cities</option>
+            <option value="Food">Food</option>
+            <option value="Movies">Movies</option>
+            <option value="Random">Random</option>
+          </select>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <p class="chosen-category">Your chosen category is:</p>
+      <div class="mystery-word"></div>
+      <div class="letters">
+        <button class="letters__button" value="a">a</button>
+        <button class="letters__button" value="b">b</button>
+        <button class="letters__button" value="c">c</button>
+        <button class="letters__button" value="d">d</button>
+        <button class="letters__button" value="e">e</button>
+        <button class="letters__button" value="f">f</button>
+        <button class="letters__button" value="g">g</button>
+        <button class="letters__button" value="h">h</button>
+        <button class="letters__button" value="i">i</button>
+        <button class="letters__button" value="j">j</button>
+        <button class="letters__button" value="k">k</button>
+        <button class="letters__button" value="l">l</button>
+        <button class="letters__button" value="m">m</button>
+        <button class="letters__button" value="n">n</button>
+        <button class="letters__button" value="o">o</button>
+        <button class="letters__button" value="p">p</button>
+        <button class="letters__button" value="q">q</button>
+        <button class="letters__button" value="r">r</button>
+        <button class="letters__button" value="s">s</button>
+        <button class="letters__button" value="t">t</button>
+        <button class="letters__button" value="u">u</button>
+        <button class="letters__button" value="v">v</button>
+        <button class="letters__button" value="w">w</button>
+        <button class="letters__button" value="x">x</button>
+        <button class="letters__button" value="y">y</button>
+        <button class="letters__button" value="z">z</button>
+      </div>
+      <div class="clue">Clue:</div>
+      <div class="container">
+        <span id="hangman">Letters used: <br /> </span>
+        <span id="guesses-left">Guesses:</span>
+      </div>
+      <div class="answer">
+        <button class="answer__button">Ready to give up? Click here</button>
+        <p class="answer__text"></p>
+      </div>
+      <div class="footer-buttons">
+        <button class="again__button">Play again</button>
+        <!-- <button class="challenge__button hidden">
+          Fancy a real challenge?
+        </button> -->
+      </div>
+      <!-- <img class="grass__img" src="./images/grass.png" alt="grass" /> -->
+    </main>
+    
+  </body>
+</html>
