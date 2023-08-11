@@ -1,0 +1,119 @@
+@use "./variables" as *;
+
+header {
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3vh;
+    position: relative;
+
+    h1 {
+      font-family: $font-primary;
+      font-size: 5.4vw;
+    }
+  }
+
+  p {
+    margin: 20px 0;
+    text-align: center;
+    position: relative;
+  }
+
+  .menus {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // line-height: 3;
+    margin: 20px 0;
+    font-family: $font-primary;
+    font-size: 3.5vw;
+    position: relative;
+
+    &__category {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 10px 0;
+      position: relative;
+
+      select {
+        font-size: 4vw;
+        width: 50vw;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 750px) {
+  header {
+    nav {
+      align-items: center;
+      h1 {
+        font-family: $font-primary;
+        font-size: 5.3vw;
+      }
+    }
+
+    p {
+      margin: 20px 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .menus {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 20px 0;
+      font-family: $font-primary;
+      font-size: 3vw;
+      position: relative;
+
+      &__category {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px 0;
+        position: relative;
+
+        select {
+          font-size: 3vw;
+          width: 50vw;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  header {
+    nav {
+      align-items: center;
+      h1 {
+        font-family: $font-primary;
+        font-size: 5vw;
+      }
+    }
+
+    p {
+      margin: 20px 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .menus {
+      margin: 10px 0;
+      font-size: 2vw;
+
+      &__category {
+        margin: 10px 0;
+
+        select {
+          font-size: 2vw;
+          width: 35vw;
+        }
+      }
+    }
+  }
+}
