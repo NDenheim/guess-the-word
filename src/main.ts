@@ -60,6 +60,7 @@ const movieWords = wordArray.filter((word: Word) => {
 
 alphabetButtons.forEach((button: any) => {
   button.disabled = true;
+  button.style.color = "lightblue";
 });
 
 let mysteryWord: string = "";
@@ -192,6 +193,7 @@ categoryMenu.addEventListener("change", () => {
 
   alphabetButtons.forEach((button: any) => {
     button.disabled = false;
+    button.style.color = "black";
   });
 });
 
