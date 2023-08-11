@@ -17,13 +17,10 @@ const answerText = document.querySelector(
 ) as HTMLParagraphElement;
 const guessesDiv = document.querySelector("#guesses-left") as HTMLSpanElement;
 const answerButton = document.querySelector(".answer__button");
-const hangmanDiv = document.querySelector("#hangman");
+const hangmanDiv = document.querySelector("#letters-used");
 const againButton = document.querySelector(
   ".again__button"
 ) as HTMLButtonElement;
-// const challengeButton = document.querySelector(
-//   ".challenge__button"
-// ) as HTMLButtonElement;
 
 if (
   !wordDisplay ||
@@ -37,7 +34,6 @@ if (
   !answerButton ||
   !hangmanDiv ||
   !againButton
-  // || !challengeButton
 ) {
   throw new Error("Issue with QS");
 }
@@ -99,8 +95,6 @@ const generateAnswer = () => {
   answerText.innerText = mysteryWord;
 };
 
-categoryMenu.addEventListener("change", generateAnswer);
-
 const handleClueButtonPress = () => {
   for (let i = 0; i < wordArray.length; i++) {
     if (wordArray[i].name == answerText.innerText) {
@@ -108,13 +102,18 @@ const handleClueButtonPress = () => {
     }
   }
 };
-clueButton.addEventListener("click", handleClueButtonPress);
 
 const handleAnswerButtonPress = () => {
   alert("Bit embarrassing but okay...");
   answerText.style.color = "black";
+  alphabetButtons.forEach((button: any) => {
+    button.disabled = true;
+    button.style.color = "lightblue";
+  });
 };
 
+categoryMenu.addEventListener("change", generateAnswer);
+clueButton.addEventListener("click", handleClueButtonPress);
 answerButton.addEventListener("click", handleAnswerButtonPress);
 
 let guessesLeft = 10;
@@ -143,7 +142,6 @@ alphabetButtons.forEach((button: any) => {
 
     let letterArray = answerText.innerText.split("");
     checkGuesses(letterArray, button.textContent);
-    button.disabled = true;
 
     wordDisplay.innerText = guesses.join("");
 
@@ -151,7 +149,6 @@ alphabetButtons.forEach((button: any) => {
       alert(
         "Winner winner, chicken dinner. To play again, click the button at the bottom of the screen."
       );
-      // challengeButton.className = "show";
     }
   });
 });
@@ -178,6 +175,9 @@ alphabetButtons.forEach((button: any) => {
     lettersUsedArray.push(button.textContent);
     let lettersUsed = lettersUsedArray.join(" ");
     hangmanDiv.innerHTML = `Letters used: <br> ${lettersUsed}`;
+
+    button.disabled = true;
+    button.style.color = "lightblue";
   });
 });
 
@@ -200,9 +200,3 @@ categoryMenu.addEventListener("change", () => {
 againButton.addEventListener("click", () => {
   window.location.reload();
 });
-
-// const challengeMode = () => {
-//   document.body.classList.toggle("challengeMode");
-// };
-
-// challengeButton.addEventListener("click", challengeMode);
